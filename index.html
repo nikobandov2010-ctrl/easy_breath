@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EasyBreath</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+font-family:'Poppins',sans-serif;
+margin:0;
+background:white;
+color:#222;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+border-bottom:1px solid #eee;
+}
+
+.logo{
+font-size:28px;
+color:#2fbf5b;
+font-weight:700;
+}
+
+.cart{
+cursor:pointer;
+font-size:20px;
+}
+
+.hero{
+background:#f5fff7;
+text-align:center;
+padding:120px 20px;
+}
+
+.hero h1{
+font-size:52px;
+}
+
+.btn{
+background:#2fbf5b;
+color:white;
+border:none;
+padding:14px 30px;
+border-radius:25px;
+cursor:pointer;
+}
+
+.slider{
+max-width:800px;
+margin:50px auto;
+}
+
+.slide{
+display:none;
+}
+
+.slide img{
+width:100%;
+border-radius:12px;
+}
+
+.products{
+padding:70px 10%;
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.product{
+width:260px;
+border:1px solid #eee;
+border-radius:12px;
+padding:20px;
+text-align:center;
+}
+
+.product img{
+width:100%;
+border-radius:10px;
+}
+
+.price{
+color:#2fbf5b;
+font-size:24px;
+margin:10px;
+}
+
+.bundle{
+border:2px solid #2fbf5b;
+background:#f5fff7;
+}
+
+.features{
+padding:80px;
+display:flex;
+flex-wrap:wrap;
+gap:40px;
+justify-content:center;
+}
+
+.feature{
+width:200px;
+text-align:center;
+}
+
+.reviews{
+padding:80px;
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+justify-content:center;
+}
+
+.review{
+border:1px solid #eee;
+padding:20px;
+border-radius:10px;
+width:250px;
+}
+
+.faq{
+padding:80px;
+max-width:700px;
+margin:auto;
+}
+
+.faq-item{
+margin-bottom:20px;
+}
+
+.newsletter{
+background:#f5fff7;
+text-align:center;
+padding:60px;
+}
+
+footer{
+background:#f5fff7;
+text-align:center;
+padding:40px;
+}
+
+.social i{
+font-size:28px;
+margin:10px;
+color:#2fbf5b;
+}
+
+.cart-box{
+position:fixed;
+top:0;
+right:-350px;
+width:320px;
+height:100%;
+background:white;
+border-left:1px solid #ddd;
+padding:20px;
+transition:0.3s;
+overflow:auto;
+}
+
+.cart-box.active{
+right:0;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+}
+
+.total{
+margin-top:20px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">EasyBreath</div>
+
+<div class="cart" onclick="toggleCart()">
+<i class="fa-solid fa-cart-shopping"></i>
+(<span id="cartCount">0</span>)
+</div>
+
+</header>
+
+<section class="hero">
+
+<h1>Diši lakše</h1>
+<p>Premium trakice za nos.</p>
+
+<button class="btn">Kupi sada</button>
+
+</section>
+
+<div class="slider">
+
+<div class="slide"><img src="easybreath.jpg"></div>
+<div class="slide"><img src="easybreath.jpg"></div>
+<div class="slide"><img src="easybreath.jpg"></div>
+<div class="slide"><img src="easybreath.jpg"></div>
+<div class="slide"><img src="easybreath.jpg"></div>
+
+</div>
+
+<section class="products">
+
+<div class="product">
+
+<img src="easybreath.jpg">
+
+<h3>1 Pakiranje</h3>
+
+<div class="price">12,99€</div>
+
+<button class="btn" onclick="addToCart('1 pakiranje',12.99)">
+Dodaj u košaricu
+</button>
+
+</div>
+
+<div class="product bundle">
+
+<img src="easybreath.jpg">
+
+<h3>3 Pakiranja</h3>
+
+<div class="price">25€</div>
+
+<button class="btn" onclick="addToCart('3 pakiranja',25)">
+Dodaj u košaricu
+</button>
+
+</div>
+
+<div class="product bundle">
+
+<img src="easybreath.jpg">
+
+<h3>5 Pakiranja</h3>
+
+<div class="price">39€</div>
+
+<button class="btn" onclick="addToCart('5 pakiranja',39)">
+Dodaj u košaricu
+</button>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="feature">✔ Premium kvaliteta</div>
+<div class="feature">✔ Udobno nošenje</div>
+<div class="feature">✔ Jednostavno korištenje</div>
+<div class="feature">✔ Univerzalna veličina</div>
+
+</section>
+
+<section class="reviews">
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p>Odličan proizvod.</p>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p>Stvarno pomaže.</p>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p>Vrlo udobne.</p>
+</div>
+
+</section>
+
+<section class="faq">
+
+<div class="faq-item">
+<h3>Kako koristiti trakice?</h3>
+<p>Zalijepite na nos prije spavanja.</p>
+</div>
+
+<div class="faq-item">
+<h3>Koliko ih ima u pakiranju?</h3>
+<p>30 trakica.</p>
+</div>
+
+</section>
+
+<section class="newsletter">
+
+<h2>Prijavi se za popust</h2>
+
+<input placeholder="Email">
+<button class="btn">Prijavi se</button>
+
+</section>
+
+<footer>
+
+<div class="social">
+
+<i class="fab fa-tiktok"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-twitter"></i>
+<i class="fab fa-facebook"></i>
+
+</div>
+
+<p>© EasyBreath</p>
+
+</footer>
+
+<div class="cart-box" id="cartBox">
+
+<div style="display:flex;justify-content:space-between;">
+<h3>Košarica</h3>
+<button onclick="toggleCart()">X</button>
+</div>
+
+<div id="cartItems"></div>
+
+<div class="total">
+Ukupno: <span id="total">0</span> €
+</div>
+
+</div>
+
+<script>
+
+let cart=[]
+let total=0
+
+function addToCart(name,price){
+
+cart.push({name,price})
+total+=price
+updateCart()
+
+}
+
+function updateCart(){
+
+let items=document.getElementById("cartItems")
+
+items.innerHTML=""
+
+cart.forEach((item,index)=>{
+
+items.innerHTML+=`
+<div class="cart-item">
+${item.name} - ${item.price}€
+<button onclick="removeItem(${index})">X</button>
+</div>
+`
+
+})
+
+document.getElementById("cartCount").innerText=cart.length
+document.getElementById("total").innerText=total.toFixed(2)
+
+}
+
+function removeItem(index){
+
+total-=cart[index].price
+cart.splice(index,1)
+
+updateCart()
+
+}
+
+function toggleCart(){
+
+document.getElementById("cartBox").classList.toggle("active")
+
+}
+
+let slideIndex=0
+showSlides()
+
+function showSlides(){
+
+let slides=document.getElementsByClassName("slide")
+
+for(let i=0;i<slides.length;i++){
+slides[i].style.display="none"
+}
+
+slideIndex++
+
+if(slideIndex>slides.length){slideIndex=1}
+
+slides[slideIndex-1].style.display="block"
+
+setTimeout(showSlides,3000)
+
+}
+
+</script>
+
+</body>
+</html>
